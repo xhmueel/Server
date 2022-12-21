@@ -218,7 +218,7 @@ void udpSwitch(char *buffer_send, string buffer_rec){
         return;
 
     }
-    else if(parsed_message[0].compare("QUT")==0){
+    else if(parsed_message[0].compare("QUT")==0){     //ongoing game needs moves?
         //quit/exit game
         string PLID = parsed_message[1];
         
@@ -1018,6 +1018,8 @@ void quitGame(string PLID, char *buffer_send){
     char q[2] = "Q";
     gameEnds(filename, PLID, q); //TO DO create score file
 
+    //send message to client
+    strcpy(buffer_send,"RQT OK\n\0");
     //(TO DO) end PLID TCP connections
 
 }
